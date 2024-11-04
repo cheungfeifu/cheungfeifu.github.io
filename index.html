@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/04/mongo%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95/" data-id="cm32kiz1o0000noqva3wxhib1" data-title="mongo添加索引" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/04/mongo%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95/" data-id="cm32kkouh0003w0qvdy4k97lk" data-title="mongo添加索引" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -173,7 +173,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">config = &#123; _id:&quot;Rpl-iiiiii&quot;, members:[</span><br><span class="line">&#123;_id:0,host:&quot;hosts1:27017&quot;,priority:2&#125;,</span><br><span class="line">&#123;_id:1,host:&quot;hosts2:27017&quot;,priority:1&#125;,</span><br><span class="line">&#123;_id:2,host:&quot;hosts3:27017&quot;,priority:0&#125;]</span><br><span class="line">&#125;</span><br><span class="line">rs.initiate(config);</span><br><span class="line">rs.status()</span><br></pre></td></tr></table></figure>
 
 <h4 id="创建管理员账号"><a href="#创建管理员账号" class="headerlink" title="创建管理员账号"></a>创建管理员账号</h4><p>登录到primary节点执行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">db = db.getSiblingDB(&quot;admin&quot;);</span><br><span class="line">db.createRole(</span><br><span class="line">    &#123;</span><br><span class="line">        role:&quot;superUser&quot;,</span><br><span class="line">        privileges:[&#123;</span><br><span class="line">            resource: &#123;anyResource: true&#125;,</span><br><span class="line">            actions: [&quot;anyAction&quot;]</span><br><span class="line">        &#125;],</span><br><span class="line">        roles:[]</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line">db.createUser(</span><br><span class="line">    &#123;</span><br><span class="line">        user: &quot;cds_root&quot;,</span><br><span class="line">        pwd: &quot;eE5ACzfR&quot;,</span><br><span class="line">        roles: [&#123;role: &quot;superUser&quot;, db: &quot;admin&quot;&#125;]</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">db = db.getSiblingDB(&quot;admin&quot;);</span><br><span class="line">db.createRole(</span><br><span class="line">    &#123;</span><br><span class="line">        role:&quot;superUser&quot;,</span><br><span class="line">        privileges:[&#123;</span><br><span class="line">            resource: &#123;anyResource: true&#125;,</span><br><span class="line">            actions: [&quot;anyAction&quot;]</span><br><span class="line">        &#125;],</span><br><span class="line">        roles:[]</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line">db.createUser(</span><br><span class="line">    &#123;</span><br><span class="line">        user: &quot;root&quot;,</span><br><span class="line">        pwd: &quot;eE5ACzfR&quot;,</span><br><span class="line">        roles: [&#123;role: &quot;superUser&quot;, db: &quot;admin&quot;&#125;]</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
 <h4 id="配置认证"><a href="#配置认证" class="headerlink" title="配置认证"></a>配置认证</h4><p>副本集中配置文件进行如下修改</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">    authorization: &quot;enabled&quot;</span><br><span class="line">    keyFile: &#x27;/opt/auth.key&#x27;</span><br></pre></td></tr></table></figure>
@@ -185,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/04/mongo%E9%83%A8%E7%BD%B2%E5%89%AF%E6%9C%AC%E9%9B%86/" data-id="cm32kiz1y0003noqvf5107ah3" data-title="mongo部署副本集" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/04/mongo%E9%83%A8%E7%BD%B2%E5%89%AF%E6%9C%AC%E9%9B%86/" data-id="cm32kkoud0001w0qv3bm5d7dc" data-title="mongo部署副本集" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -270,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/" data-id="cm32kiz1t0001noqvck555ux5" data-title="MySQL日志报错 Got an error reading communication packe" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/" data-id="cm32kkou70000w0qvacmoepws" data-title="MySQL日志报错 Got an error reading communication packe" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -311,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-md/" data-id="cm32kiz290009noqv6okd9k7g" data-title="我的第一篇博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/11/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-md/" data-id="cm32kkoui0004w0qvazkid4y3" data-title="我的第一篇博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
