@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Cheungfeifu&#39;s Blog</title>
+  <title>mongo部署副本集 | Cheungfeifu&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Cheungfeifu&#39;s Blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="部署前操作 系统参数优化  12345678910111213141516171819vm.swappiness &#x3D; 1vm.max_map_count &#x3D; 262144net.core.somaxconn &#x3D; 32768net.ipv4.tcp_tw_reuse &#x3D; 1kernel.pid_max &#x3D; 4194303net.ipv4.tcp_fin_timeout &#x3D; 2net.ipv4.tcp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongo部署副本集">
+<meta property="og:url" content="http://example.com/2024/11/04/mongo%E9%83%A8%E7%BD%B2%E5%89%AF%E6%9C%AC%E9%9B%86/index.html">
 <meta property="og:site_name" content="Cheungfeifu&#39;s Blog">
+<meta property="og:description" content="部署前操作 系统参数优化  12345678910111213141516171819vm.swappiness &#x3D; 1vm.max_map_count &#x3D; 262144net.core.somaxconn &#x3D; 32768net.ipv4.tcp_tw_reuse &#x3D; 1kernel.pid_max &#x3D; 4194303net.ipv4.tcp_fin_timeout &#x3D; 2net.ipv4.tcp">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-04T05:12:52.000Z">
+<meta property="article:modified_time" content="2024-11-04T05:13:39.793Z">
 <meta property="article:author" content="Cheungfeifu">
+<meta property="article:tag" content="mongo">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Cheungfeifu's Blog" type="application/atom+xml">
@@ -71,9 +76,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-mongo部署副本集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-mongo部署副本集" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2024/11/04/mongo%E9%83%A8%E7%BD%B2%E5%89%AF%E6%9C%AC%E9%9B%86/" class="article-date">
   <time class="dt-published" datetime="2024-11-04T05:12:52.000Z" itemprop="datePublished">2024-11-04</time>
@@ -86,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/04/mongo%E9%83%A8%E7%BD%B2%E5%89%AF%E6%9C%AC%E9%9B%86/">mongo部署副本集</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      mongo部署副本集
     </h1>
   
 
@@ -152,137 +155,19 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-MySQL日志报错 Got an error reading communication packe" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/" class="article-date">
-  <time class="dt-published" datetime="2024-11-04T04:28:13.000Z" itemprop="datePublished">2024-11-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/">MySQL日志报错 Got an error reading communication packe</a>
-    </h1>
+    <a href="/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL日志报错 Got an error reading communication packe</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="1-报错信息"><a href="#1-报错信息" class="headerlink" title="1.报错信息"></a>1.报错信息</h3><p><code>[Warning] Aborted connection xxx to db: &#39;&lt;database name&gt;&#39; user: &#39;&lt;user name&gt;&#39; host: &#39;&lt;host IP&gt;&#39; (Got an error reading communication packets)</code></p>
-<p>假如出现该类型报错，可能原因为：连接丢失，不正常的连接关闭，或者连接失败</p>
-<h3 id="2-可能原因"><a href="#2-可能原因" class="headerlink" title="2.可能原因"></a>2.可能原因</h3><ul>
-<li>客户端或驱动程序不兼容</li>
-<li>防火墙或代理，可以关闭任何空闲连接或阻止连接。</li>
-<li>客户端-服务器连接关闭不当，导致 RDS for MySQL 内部的休眠连接数量增多。</li>
-<li>客户端应用程序不当终止连接。如果连接闲置了一段时间，MySQL 会强制关闭这些连接。然后您会看到“已中止连接”消息。</li>
-<li>超过wait_timeout或interactive_timeout阈值的空闲连接。</li>
-<li>获取连接数据包时超过connect_timeout秒阈值的客户端连接。</li>
-<li>net_write_timeout和net_read_timeout等参数的值不足。</li>
-<li>超出了max_allowed_pa ​​cket参数值。如果该值太小或查询需要的内存超过为 RDS for MySQL 分配的内存，则会触发Aborted connection警告。</li>
-</ul>
-<h3 id="3-排查思路"><a href="#3-排查思路" class="headerlink" title="3.排查思路"></a>3.排查思路</h3><ul>
-<li><strong>为connect_timeout</strong>&#x3D;&#x3D;设置一个更高的值，看看这是否有助于减少&#x3D;&#x3D;<strong>Aborted connection</strong>&#x3D;&#x3D;错误消息的发生。此参数指定 MySQL 服务器实例在以错误握手响应之前必须等待的时间（以秒为单位）。&#x3D;&#x3D;</li>
-<li>&#x3D;&#x3D;修改&#x3D;&#x3D;<strong>interactive_timeout</strong>&#x3D;&#x3D;和&#x3D;&#x3D;<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_wait_timeout">&#x3D;&#x3D;wait_timeout&#x3D;&#x3D;</a>&#x3D;&#x3D;。使用连接池的应用程序（如 Java）必须具有与连接池设置相匹配的超时时间。&#x3D;&#x3D;</li>
-<li><strong>如果实例必须处理大型查询，请增加max_allowed_pa​​cket</strong>&#x3D;&#x3D;的值。如果某一行的数据量超过客户端的&#x3D;&#x3D;<strong>max_allowed_pa​​cket</strong>&#x3D;&#x3D;值，则会报告错误。如果您使用大型 BLOB 列或长字符串，请增加此值。有关更多信息，请参阅&#x3D;&#x3D;<a target="_blank" rel="noopener" href="https://aws.amazon.com/blogs/database/best-practices-for-configuring-parameters-for-amazon-rds-for-mysql-part-3-parameters-related-to-security-operational-manageability-and-connectivity-timeout/">&#x3D;&#x3D;配置 Amazon RDS for MySQL 参数的最佳实践&#x3D;&#x3D;</a>&#x3D;&#x3D;中的&#x3D;&#x3D;<strong>max_allowed_pa​​cket</strong>&#x3D;&#x3D;部分。&#x3D;&#x3D;</li>
-<li>&#x3D;&#x3D;增加&#x3D;&#x3D;<strong>net_write_timeout</strong>&#x3D;&#x3D;和&#x3D;&#x3D;<strong>net_read_timeout</strong>&#x3D;&#x3D;值。&#x3D;&#x3D;<strong>注意</strong>&#x3D;&#x3D;：这些值可以设置为与&#x3D;&#x3D;<strong>wait_timeout</strong>&#x3D;&#x3D;相同的值。&#x3D;&#x3D;</li>
-<li>确保 RDS for MySQL 或 Aurora MySQL 兼容连接已正确关闭。退出数据库之前，请确保从客户端应用程序调用<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/c-api/8.0/en/mysql-close.html">mysql_close()函数。</a></li>
-<li>tcpdump 抓包看一下为什么断开连接</li>
-</ul>
-<p>假如出现 ‘Lost connection to MySQL server during query’的报错，并且使用了haproxy代理，建议修改haproxy参数。</p>
-<ul>
-<li>增加timeout</li>
-<li>设置tcpka 保持长连接</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">listen  STORAGE_BLOCK_SERVICE</span><br><span class="line">        # STORAGE-BLOCK-SERVICE</span><br><span class="line">        mode    tcp</span><br><span class="line">        maxconn 65535</span><br><span class="line">        bind    0.0.0.0:63306</span><br><span class="line">        timeout connect 480m</span><br><span class="line">        timeout client 480m</span><br><span class="line">        timeout server 480m</span><br><span class="line">        option tcpka</span><br><span class="line">        #option httpchk</span><br><span class="line">        option tcplog</span><br><span class="line">        option dontlognull</span><br><span class="line">        log 10.13.1.0 local7 info</span><br><span class="line"></span><br><span class="line">        balance leastconn</span><br><span class="line"></span><br><span class="line">        server DB1      mysqlhost:3306</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/04/MySQL%E6%97%A5%E5%BF%97%E6%8A%A5%E9%94%99%20Got%20an%20error%20reading%20communication%20packe/" data-id="cm32kfz9q0000ykqvcykn36hq" data-title="MySQL日志报错 Got an error reading communication packe" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-我的第一篇博客-md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/11/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-md/" class="article-date">
-  <time class="dt-published" datetime="2024-11-01T09:53:13.000Z" itemprop="datePublished">2024-11-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/11/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-md/">我的第一篇博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="这里是标题"><a href="#这里是标题" class="headerlink" title="这里是标题"></a>这里是标题</h3><p>这里是内容</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/11/01/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2-md/" data-id="cm32kfza30004ykqv02n3gn84" data-title="我的第一篇博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/test/" rel="tag">test</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
